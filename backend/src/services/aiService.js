@@ -23,20 +23,20 @@ try {
 
 /**
  * Parse resume PDF and extract text
+ * Accepts either a Buffer (from memory storage) or a file path string
  */
-async function parseResume(filePath) {
+async function parseResume(input) {
     try {
         if (!pdfParse) {
-            // Return mock data if pdf-parse not available
             return 'Experienced software developer with skills in JavaScript, React, Node.js, MongoDB, and Python.';
         }
 
-        const dataBuffer = fs.readFileSync(filePath);
+        // Accept Buffer directly or read from path
+        const dataBuffer = Buffer.isBuffer(input) ? input : fs.readFileSync(input);
         const data = await pdfParse(dataBuffer);
         return data.text;
     } catch (error) {
         console.error('Error parsing PDF:', error);
-        // Return fallback text
         return 'Professional with technical skills and experience.';
     }
 }

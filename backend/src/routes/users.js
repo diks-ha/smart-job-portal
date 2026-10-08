@@ -2,29 +2,14 @@ const express = require('express');
 const router = express.Router();
 const asyncHandler = require('express-async-handler');
 const multer = require('multer');
-const path = require('path');
-const { v4: uuidv4 } = require('uuid');
 const User = require('../models/User');
 const Application = require('../models/Application');
 const Job = require('../models/Job');
 const { protect } = require('../middleware/auth');
 const aiService = require('../services/aiService');
-const fs = require('fs');
 
-// Configure multer for file uploads
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        const uploadDir = path.join(__dirname, '../../uploads');
-        if (!fs.existsSync(uploadDir)) {
-            fs.mkdirSync(uploadDir, { recursive: true });
-        }
-        cb(null, uploadDir);
-    },
-    filename: (req, file, cb) => {
-        const uniqueName = `${uuidv4()}${path.extname(file.originalname)}`;
-        cb(null, uniqueName);
-    }
-});
+// Configure multer for file uploads (memory storage — works on all cloud hosts)
+const storage = multer.memoryStorage();
 
 const upload = multer({
     storage,
@@ -124,13 +109,14 @@ router.post('/:id/resume', protect, upload.single('resume'), asyncHandler(async 
         });
     }
 
-    // Parse resume using AI
-    const resumeText = await aiService.parseResume(req.file.path);
+    // Parse resume using AI (buffer from memory storage)
+    const resumeText = await aiService.parseResume(req.file.buffer);
     const extractedSkills = await aiService.extractSkills(resumeText);
 
-    // Update user resume
+    // Update user resume — store as base64 data URI or just the parsed text
+    // In production with no persistent storage, we store the parsed text only
     user.resume = {
-        url: `/uploads/${req.file.filename}`,
+        url: `data:application/pdf;name=${req.file.originalname}`,
         text: resumeText,
         skills: extractedSkills,
         uploadedAt: new Date()

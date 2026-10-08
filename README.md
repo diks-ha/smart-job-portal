@@ -2,13 +2,7 @@
 
 A production-ready full-stack web application that provides AI-powered job matching between job seekers and recruiters.
 
-![Next.js](https://img.shields.io/badge/Next.js-14-black)
-![React](https://img.shields.io/badge/React-18-blue)
-![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
-![MongoDB](https://img.shields.io/badge/MongoDB-4-green)
-![Express](https://img.shields.io/badge/Express-4-gray)
-
-## 🚀 Features
+##  Features
 
 ### For Job Seekers
 - User registration and authentication (JWT)
@@ -36,31 +30,31 @@ A production-ready full-stack web application that provides AI-powered job match
 - Match percentage scoring (0-100%)
 - Personalized job recommendations
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 ### Frontend
-- **Framework:** Next.js 14 (App Router)
-- **Language:** TypeScript
-- **Styling:** Tailwind CSS
-- **UI Components:** ShadCN UI + Radix UI
-- **State Management:** Zustand
-- **Data Fetching:** React Query (TanStack Query)
-- **Animations:** Framer Motion
-- **Icons:** Lucide React
+- Framework: React.js 14 
+- Language: JavaScript
+- Styling: Tailwind CSS
+- UI Components: ShadCN UI + Radix UI
+- State Management: Zustand
+- Data Fetching: React Query (TanStack Query)
+- Animations: Framer Motion
+- Icons: Lucide React
 
 ### Backend
-- **Runtime:** Node.js
-- **Framework:** Express.js
-- **Database:** MongoDB with Mongoose ODM
-- **Authentication:** JWT + bcrypt
-- **File Upload:** Multer
+- Runtime: Node.js
+- Framework: Express.js
+- Database: MongoDB with Mongoose ODM
+- Authentication: JWT + bcrypt
+- File Upload: Multer
 
 ### AI/ML
-- **Resume Parsing:** pdf-parse
-- **Embeddings:** OpenAI API (text-embedding-3-small)
-- **Matching:** Cosine similarity
+- Resume Parsing: pdf-parse
+- Embeddings: OpenAI API (text-embedding-3-small)
+- Matching: Cosine similarity
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 smart_job_portal/
@@ -100,19 +94,17 @@ smart_job_portal/
 └── README.md                 # This file
 ```
 
-## 🏁 Getting Started
+##  Getting Started
 
 ### Prerequisites
 
 - Node.js 18+
-- MongoDB (local or Atlas)
+- MongoDB 
 - OpenAI API Key
 
 ### Environment Setup
 
-1. **Clone the repository**
-
-2. **Backend Setup**
+1. Backend Setup
 ```
 bash
 cd backend
@@ -122,7 +114,7 @@ npm install
 npm run dev
 ```
 
-3. **Frontend Setup**
+2. Frontend Setup
 ```
 bash
 cd frontend
@@ -134,7 +126,7 @@ npm run dev
 
 ### Environment Variables
 
-**Backend (.env)**
+Backend (.env)
 ```
 env
 PORT=5000
@@ -144,14 +136,14 @@ JWT_EXPIRE=7d
 OPENAI_API_KEY=sk-...
 ```
 
-**Frontend (.env.local)**
+Frontend (.env.local)
 ```
 env
 NEXT_PUBLIC_API_URL=http://localhost:5000/api
 NEXT_PUBLIC_APP_URL=http://localhost:3000
 ```
 
-## 🔌 API Endpoints
+##  API Endpoints
 
 ### Authentication
 - `POST /api/auth/register` - Register new user
@@ -182,7 +174,7 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
 - `POST /api/ai/extract-skills` - Extract skills
 - `GET /api/ai/recommendations/:userId` - Get recommendations
 
-## 📱 Pages
+##  Pages
 
 ### Public
 - `/` - Landing page
@@ -202,7 +194,7 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
 - `/recruiter/jobs/new` - Post new job
 - `/recruiter/jobs/:id/applicants` - View applicants
 
-## 🎨 UI Features
+##  UI Features
 
 - Clean, modern design (LinkedIn/Indeed inspired)
 - Fully responsive (mobile + desktop)
@@ -211,7 +203,7 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
 - Smooth animations
 - Dark/Light theme ready
 
-## 📊 Database Schema
+##  Database Schema
 
 ### Users
 - Email, password (hashed)
@@ -232,13 +224,13 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
 - Match score (0-100%)
 - Timeline
 
-## 🤖 AI Matching Engine
+##  AI Matching Engine
 
-1. **Resume Parsing**: Extract text from PDF using pdf-parse
-2. **Skills Extraction**: Use OpenAI to identify skills from text
-3. **Embedding Generation**: Convert text to vectors using OpenAI
-4. **Similarity Calculation**: Compute cosine similarity
-5. **Ranking**: Sort by match score
+1. Resume Parsing: Extract text from PDF using pdf-parse
+2. Skills Extraction: Use OpenAI to identify skills from text
+3. Embedding Generation: Convert text to vectors using OpenAI
+4. Similarity Calculation: Compute cosine similarity
+5. Ranking: Sort by match score
 
 ## 🧪 Testing
 
@@ -288,3 +280,4 @@ MIT License - feel free to use this project for learning or commercial purposes.
 ---
 
 Built with ❤️ using Next.js, Express, MongoDB, and OpenAI
+

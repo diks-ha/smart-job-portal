@@ -3,15 +3,14 @@ const nextConfig = {
     reactStrictMode: true,
     images: {
         domains: ['res.cloudinary.com', 'localhost'],
-    },
-    async rewrites() {
-        return [
+        remotePatterns: [
             {
-                source: '/api/:path*',
-                destination: 'http://localhost:5000/api/:path*',
+                protocol: 'https',
+                hostname: '**',
             },
-        ];
+        ],
     },
+    // No rewrites needed — frontend calls NEXT_PUBLIC_API_URL directly
 };
 
 module.exports = nextConfig;
